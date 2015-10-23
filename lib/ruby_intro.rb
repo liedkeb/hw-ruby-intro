@@ -3,15 +3,31 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  arr.empty? ? 0 : arr.inject{|sum,x| sum + x } 
 end
 
 def max_2_sum arr
-  # YOUR CODE HERE
+  return 0 unless arr.any?
+  return arr[0] if arr.length==1
+  first_max=arr[0]
+  second_max=arr[1]
+  first_max,second_max = second_max, first_max if first_max<second_max
+  arr.drop(2).each { |elem|
+  if first_max<=elem 
+    second_max=first_max
+    first_max=elem
+  end
+  if second_max<elem && elem<first_max
+    second_max=elem
+  end
+  }
+ first_max + second_max
 end
 
 def sum_to_n? arr, n
-  # YOUR CODE HERE
+  #return true if arr.empty? && n==0
+  return false if arr.empty?
+  arr.combination(2).any? {|first, second| first + second == n }
 end
 
 # Part 2
