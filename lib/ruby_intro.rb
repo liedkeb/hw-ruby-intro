@@ -33,15 +33,18 @@ end
 # Part 2
 
 def hello(name)
-  # YOUR CODE HERE
+  "Hello, "+name
 end
 
 def starts_with_consonant? s
-  # YOUR CODE HERE
+  return false if s.empty? or (s[0] =~ /[[:alpha:]]/)==nil
+  not ['A', 'E', 'I', 'O', 'U'].include?(s[0].upcase)
+
 end
 
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  return false if (s =~ /\A[-+]?\d+\z/)==nil
+  s.to_i % 4 == 0
 end
 
 # Part 3
